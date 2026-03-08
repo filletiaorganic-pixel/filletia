@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filletia Organic</title>
+
+<style>
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+margin:0;
+background:#f4f7f6;
+}
+
+header{
+background:#0f766e;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+nav{
+background:#134e4a;
+padding:12px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+section{
+padding:40px;
+max-width:1100px;
+margin:auto;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:15px;
+box-shadow:0 6px 12px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+height:180px;
+object-fit:cover;
+}
+
+button{
+background:#0f766e;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.ai-box{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+#chatbox{
+height:200px;
+overflow:auto;
+border:1px solid #ccc;
+padding:10px;
+margin-bottom:10px;
+border-radius:6px;
+}
+
+.wa{
+background:#25D366;
+display:inline-block;
+color:white;
+padding:12px 20px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin-top:15px;
+}
+
+footer{
+background:#134e4a;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Filletia Organic</h1>
+<p>Healthy Fish Fillet • Natural Spices • AI Menu Recommendation</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#produk">Produk</a>
+<a href="#ai">AI Menu</a>
+<a href="#chat">AI Chatbot</a>
+<a href="#order">Order</a>
+</nav>
+
+<section id="home">
+
+<h2>Tentang Filletia Organic</h2>
+
+<p>
+Filletia Organic merupakan produk olahan ikan fillet berbumbu rempah alami tanpa bahan pengawet.
+Produk ini dirancang sebagai makanan sehat, praktis, dan bergizi tinggi bagi mahasiswa,
+keluarga, serta pekerja yang membutuhkan makanan cepat saji namun tetap sehat.
+</p>
+
+<p>
+Dengan konsep Digital Entrepreneurship dan AI-Powered Innovation,
+website ini membantu konsumen menemukan menu fillet terbaik melalui
+fitur rekomendasi AI.
+</p>
+
+</section>
+
+<section id="produk">
+
+<h2>Produk Filletia</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604909052743-94e838986d24" alt="Fillet Lemon Herb">
+<h3>Fillet Lemon Herb</h3>
+<p>Fillet ikan segar dengan rasa lemon dan herbs. Cocok untuk diet sehat.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598515213692-5f252f75d785" alt="Fillet Rempah">
+<h3>Fillet Rempah Nusantara</h3>
+<p>Bumbu rempah khas Indonesia dengan cita rasa gurih.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92" alt="Fillet Crispy">
+<h3>Fillet Crispy Kids</h3>
+<p>Fillet ikan crispy yang disukai anak-anak dan mudah dimasak.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="ai">
+
+<h2>AI Rekomendasi Menu</h2>
+
+<div class="ai-box">
+
+<p>Pilih kebutuhan makanan Anda:</p>
+
+<select id="need">
+<option value="">-- Pilih --</option>
+<option value="diet">Diet Sehat</option>
+<option value="anak">Menu Anak</option>
+<option value="praktis">Makanan Praktis</option>
+</select>
+
+<button onclick="recommendMenu()">Cari Rekomendasi</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+</section>
+
+<section id="chat">
+
+<h2>AI Chatbot Filletia</h2>
+
+<div class="ai-box">
+
+<div id="chatbox"></div>
+
+<input type="text" id="userInput" placeholder="Tanya tentang produk Filletia..." style="width:70%;padding:8px">
+<button onclick="sendMessage()">Kirim</button>
+
+</div>
+
+</section>
+
+<section id="order">
+
+<h2>Order Filletia Organic</h2>
+
+<p>
+Ingin mencoba produk Filletia Organic? Silakan pesan langsung melalui WhatsApp.
+</p>
+
+<p>
+Nomor WhatsApp:
+<b>+62 812-3456-7890</b>
+</p>
+
+<a class="wa" href="https://wa.me/6281234567890" target="_blank">
+Pesan via WhatsApp
+</a>
+
+</section>
+
+<footer>
+
+<p>© 2026 Filletia Organic • Healthy Fish Innovation</p>
+
+</footer>
+
+<script>
+
+function recommendMenu(){
+
+let need=document.getElementById("need").value
+let result=document.getElementById("result")
+
+if(need=="diet"){
+result.innerText="Rekomendasi: Fillet Lemon Herb (rendah lemak dan sehat)."
+}
+
+else if(need=="anak"){
+result.innerText="Rekomendasi: Fillet Crispy Kids (disukai anak-anak)."
+}
+
+else if(need=="praktis"){
+result.innerText="Rekomendasi: Fillet Rempah Nusantara (praktis dimasak)."
+}
+
+else{
+result.innerText="Silakan pilih kebutuhan terlebih dahulu." 
+}
+
+}
+
+function sendMessage(){
+
+let input=document.getElementById("userInput").value
+let chatbox=document.getElementById("chatbox")
+
+chatbox.innerHTML += "<p><b>Anda:</b> "+input+"</p>"
+
+let reply=""
+
+if(input.toLowerCase().includes("anak")){
+reply="Kami rekomendasikan Fillet Crispy Kids."
+}
+
+else if(input.toLowerCase().includes("diet")){
+reply="Coba Fillet Lemon Herb yang cocok untuk diet sehat."
+}
+
+else if(input.toLowerCase().includes("menu")){
+reply="Kami memiliki Lemon Herb, Rempah Nusantara, dan Crispy Kids."
+}
+
+else{
+reply="Filletia Organic adalah fillet ikan sehat tanpa pengawet." 
+}
+
+chatbox.innerHTML += "<p><b>Filletia AI:</b> "+reply+"</p>"
+
+chatbox.scrollTop=chatbox.scrollHeight
+
+document.getElementById("userInput").value=""
+
+}
+
+</script>
+
+</body>
+</html>
